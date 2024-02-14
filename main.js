@@ -65,7 +65,7 @@ function addPlankton() {
 Array(200).fill().forEach(addPlankton)
 
 // adding custom textures
-const oceanTexture = new THREE.TextureLoader().load("ocean.jpg");
+const oceanTexture = new THREE.TextureLoader().load("./assets/ocean.jpg");
 scene.background = oceanTexture;
 
 //map Sharks
