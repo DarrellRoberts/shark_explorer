@@ -7,7 +7,7 @@
          "habitat": "Coastal and offshore waters",
          "diet": "Seals, sea lions, fish",
          "dangerToHumans": "High",
-         "imageURL": "./assets/greatShark.jpg",
+         "imageURL": "./greatShark.jpg",
          "yposition": 15
         },
         {
@@ -18,7 +18,7 @@
          "habitat": "Warm coastal waters",
          "diet": "Fish, rays, crustaceans",
          "dangerToHumans": "Low to moderate",
-         "imageURL": "./assets/hammerhead.jpg",
+         "imageURL": "./hammerhead.jpg",
          "yposition": -5
         },
         {
@@ -29,7 +29,7 @@
          "habitat": "Coastal and offshore",
          "diet": "Fish, seals, turtles",
          "dangerToHumans": "High",
-         "imageURL": "./assets/tigerShark.jpg",
+         "imageURL": "./tigerShark.jpg",
          "yposition": 10
         },
         {
@@ -40,7 +40,7 @@
          "habitat": "Tropical oceans",
          "diet": "Plankton, small fish",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/whaleshark.jpg",
+         "imageURL": "./whaleshark.jpg",
          "yposition": 70
         },
         {
@@ -51,7 +51,7 @@
          "habitat": "Open waters",
          "diet": "Fish, squid",
          "dangerToHumans": "Low to moderate",
-         "imageURL": "./assets/mako.jpg",
+         "imageURL": "./mako.jpg",
          "yposition": 4
         },
         {
@@ -62,7 +62,7 @@
          "habitat": "Open ocean",
          "diet": "Fish, squid",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/blue.jpg",
+         "imageURL": "./blue.jpg",
          "yposition": 4
         },
         {
@@ -73,7 +73,7 @@
          "habitat": "Coastal and freshwater",
          "diet": "Fish, dolphins, turtles",
          "dangerToHumans": "High",
-         "imageURL": "./assets/bull.jpg",
+         "imageURL": "./bull.jpg",
          "yposition": 15
         },
         {
@@ -84,7 +84,7 @@
          "habitat": "Open waters",
          "diet": "Fish, squid",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/Thresher.jpg",
+         "imageURL": "./Thresher.jpg",
          "yposition": -5
         },
         {
@@ -95,7 +95,7 @@
          "habitat": "Deep-sea",
          "diet": "Fish, cephalopods",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/goblin.jpg",
+         "imageURL": "./goblin.jpg",
          "yposition": -100
         },
         {
@@ -106,7 +106,7 @@
          "habitat": "Coastal sea floors",
          "diet": "Fish, crustaceans",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/angel.jpg",
+         "imageURL": "./angel.jpg",
          "yposition": -20
         },
         {
@@ -117,7 +117,7 @@
          "habitat": "Coral reefs",
          "diet": "Fish, crustaceans",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/zebra.jpg",
+         "imageURL": "./zebra.jpg",
          "yposition": -15
         },
         {
@@ -128,7 +128,7 @@
          "habitat": "Deep-sea",
          "diet": "Fish, marine mammals",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/cookie.jpg",
+         "imageURL": "./cookie.jpg",
          "yposition": -80
         },
         {
@@ -139,7 +139,7 @@
          "habitat": "Shallow coastal waters",
          "diet": "Fish, rays",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/lemon.jpg",
+         "imageURL": "./lemon.jpg",
          "yposition": 0
         },
         {
@@ -150,7 +150,7 @@
          "habitat": "Coral reefs",
          "diet": "Fish, crustaceans",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/blacktip.jpg",
+         "imageURL": "./blacktip.jpg",
          "yposition": 50
         },
         {
@@ -161,7 +161,7 @@
          "habitat": "Cold and temperate waters",
          "diet": "Fish, squid",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/porbeagle.jpg",
+         "imageURL": "./porbeagle.jpg",
          "yposition": 30
         },
         {
@@ -172,7 +172,7 @@
          "habitat": "Deep-sea",
          "diet": "Fish, cephalopods",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/sixgill.jpg",
+         "imageURL": "./sixgill.jpg",
          "yposition": -100
         },
         {
@@ -183,7 +183,7 @@
          "habitat": "Cold waters",
          "diet": "Fish, squid",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/dogfish.jpg",
+         "imageURL": "./dogfish.jpg",
          "yposition": 0
         },
         {
@@ -194,7 +194,7 @@
          "habitat": "Shallow coastal waters",
          "diet": "Crustaceans, sea urchins",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/jackson.jpg",
+         "imageURL": "./jackson.jpg",
          "yposition": 0
         },
         {
@@ -205,7 +205,7 @@
          "habitat": "Deep-sea",
          "diet": "Plankton",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/megamouth.jpg",
+         "imageURL": "./megamouth.jpg",
          "yposition": -100
         },
         {
@@ -216,7 +216,7 @@
          "habitat": "Temperate and cool waters",
          "diet": "Plankton",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/basking.jpg",
+         "imageURL": "./basking.jpg",
          "yposition": 90
         },
         {
@@ -227,7 +227,7 @@
          "habitat": "Arctic Oceans",
          "diet": "Fish, small sharks and squid",
          "dangerToHumans": "Low",
-         "imageURL": "./assets/greenland.jpg",
+         "imageURL": "./greenland.jpg",
          "yposition": -70
         }
     ]
