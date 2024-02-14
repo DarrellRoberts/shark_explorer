@@ -1,0 +1,233 @@
+[
+    {
+         "commonName": "Great White Shark",
+         "scientificName": "Carcharodon carcharias",
+         "length": 6.19,
+         "species": "Elasmobranchii",
+         "habitat": "Coastal and offshore waters",
+         "diet": "Seals, sea lions, fish",
+         "dangerToHumans": "High",
+         "imageURL": "./assets/greatShark.jpg",
+         "yposition": 15
+        },
+        {
+         "commonName": "Great Hammerhead Shark",
+         "scientificName": "Sphyrnidae",
+         "length": 4.45,
+         "species": "Sphyrnidae family",
+         "habitat": "Warm coastal waters",
+         "diet": "Fish, rays, crustaceans",
+         "dangerToHumans": "Low to moderate",
+         "imageURL": "./assets/hammerhead.jpg",
+         "yposition": -5
+        },
+        {
+         "commonName": "Tiger Shark",
+         "scientificName": "Galeocerdo cuvier",
+         "length": 5,
+         "species": "Carcharhinidae",
+         "habitat": "Coastal and offshore",
+         "diet": "Fish, seals, turtles",
+         "dangerToHumans": "High",
+         "imageURL": "./assets/tigerShark.jpg",
+         "yposition": 10
+        },
+        {
+         "commonName": "Whale Shark",
+         "scientificName": "Rhincodon typus",
+         "length": 12.01,
+         "species": "Rhincodontidae",
+         "habitat": "Tropical oceans",
+         "diet": "Plankton, small fish",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/whaleshark.jpg",
+         "yposition": 70
+        },
+        {
+         "commonName": "Mako Shark",
+         "scientificName": "Isurus",
+         "length": 3.84,
+         "species": "Lamnidae",
+         "habitat": "Open waters",
+         "diet": "Fish, squid",
+         "dangerToHumans": "Low to moderate",
+         "imageURL": "./assets/mako.jpg",
+         "yposition": 4
+        },
+        {
+         "commonName": "Blue Shark",
+         "scientificName": "Prionace glauca",
+         "length": 3.99,
+         "species": "Prionace",
+         "habitat": "Open ocean",
+         "diet": "Fish, squid",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/blue.jpg",
+         "yposition": 4
+        },
+        {
+         "commonName": "Bull Shark",
+         "scientificName": "Carcharhinus leucas",
+         "length": 3.6,
+         "species": "Carcharhinidae",
+         "habitat": "Coastal and freshwater",
+         "diet": "Fish, dolphins, turtles",
+         "dangerToHumans": "High",
+         "imageURL": "./assets/bull.jpg",
+         "yposition": 15
+        },
+        {
+         "commonName": "Thresher Shark",
+         "scientificName": "Alopiidae",
+         "length": 5.76,
+         "species": "Alopiidae family",
+         "habitat": "Open waters",
+         "diet": "Fish, squid",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/Thresher.jpg",
+         "yposition": -5
+        },
+        {
+         "commonName": "Goblin Shark",
+         "scientificName": "Mitsukurina owstoni",
+         "length": 3.2,
+         "species": "Mitsukurinidae",
+         "habitat": "Deep-sea",
+         "diet": "Fish, cephalopods",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/goblin.jpg",
+         "yposition": -100
+        },
+        {
+         "commonName": "Angel Shark",
+         "scientificName": "Squatina",
+         "length": 1.49,
+         "species": "Squatina genus",
+         "habitat": "Coastal sea floors",
+         "diet": "Fish, crustaceans",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/angel.jpg",
+         "yposition": -20
+        },
+        {
+         "commonName": "Zebra Shark",
+         "scientificName": "Stegostoma fasciatum",
+         "length": 2.5,
+         "species": "Stegostomatidae",
+         "habitat": "Coral reefs",
+         "diet": "Fish, crustaceans",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/zebra.jpg",
+         "yposition": -15
+        },
+        {
+         "commonName": "Cookiecutter Shark",
+         "scientificName": "Isistius brasiliensis",
+         "length": 0.49,
+         "species": "Dalatiidae",
+         "habitat": "Deep-sea",
+         "diet": "Fish, marine mammals",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/cookie.jpg",
+         "yposition": -80
+        },
+        {
+         "commonName": "Lemon Shark",
+         "scientificName": "Negaprion brevirostris",
+         "length": 3.2,
+         "species": "Carcharhinidae",
+         "habitat": "Shallow coastal waters",
+         "diet": "Fish, rays",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/lemon.jpg",
+         "yposition": 0
+        },
+        {
+         "commonName": "Blacktip Reef Shark",
+         "scientificName": "Carcharhinus melanopterus",
+         "length": 1.71,
+         "species": "Carcharhinidae",
+         "habitat": "Coral reefs",
+         "diet": "Fish, crustaceans",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/blacktip.jpg",
+         "yposition": 50
+        },
+        {
+         "commonName": "Porbeagle Shark",
+         "scientificName": "Lamna nasus",
+         "length": 3.9,
+         "species": "Lamnidae",
+         "habitat": "Cold and temperate waters",
+         "diet": "Fish, squid",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/porbeagle.jpg",
+         "yposition": 30
+        },
+        {
+         "commonName": "Sixgill Shark",
+         "scientificName": "Hexanchus griseus",
+         "length": 5,
+         "species": "Hexanchidae",
+         "habitat": "Deep-sea",
+         "diet": "Fish, cephalopods",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/sixgill.jpg",
+         "yposition": -100
+        },
+        {
+         "commonName": "Spiny Dogfish",
+         "scientificName": "Squalus acanthias",
+         "length": 1.01,
+         "species": "Squalidae",
+         "habitat": "Cold waters",
+         "diet": "Fish, squid",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/dogfish.jpg",
+         "yposition": 0
+        },
+        {
+         "commonName": "Port Jackson Shark",
+         "scientificName": "Heterodontus portusjacksoni",
+         "length": 1.31,
+         "species": "Heterodontidae",
+         "habitat": "Shallow coastal waters",
+         "diet": "Crustaceans, sea urchins",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/jackson.jpg",
+         "yposition": 0
+        },
+        {
+         "commonName": "Megamouth Shark",
+         "scientificName": "Megachasma pelagios",
+         "length": 5,
+         "species": "Megachasmidae",
+         "habitat": "Deep-sea",
+         "diet": "Plankton",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/megamouth.jpg",
+         "yposition": -100
+        },
+        {
+         "commonName": "Basking Shark",
+         "scientificName": "Cetorhinus maximus",
+         "length": 8,
+         "species": "Cetorhinus maximus",
+         "habitat": "Temperate and cool waters",
+         "diet": "Plankton",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/basking.jpg",
+         "yposition": 90
+        },
+        {
+         "commonName": "Greenland Shark",
+         "scientificName": "Somniosus microcephalus",
+         "length": 6,
+         "species": "Somniosus microcephalus",
+         "habitat": "Arctic Oceans",
+         "diet": "Fish, small sharks and squid",
+         "dangerToHumans": "Low",
+         "imageURL": "./assets/greenland.jpg",
+         "yposition": -70
+        }
+    ]
