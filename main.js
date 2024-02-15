@@ -3,16 +3,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import data from "./data.json"
 
-// fetch("./data.json")
-//   .then(response => response.json())
-//   .then(data => {
-//     // Use the data here
-//     sharkData.push(data);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
-
 //Three takes in three objects: Scene, camera and renderer
 
 //1. Scene container
@@ -25,9 +15,13 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHei
 //3. Renderer, needs to know what DOM element to use
 const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector("#bg"),})
 
+const depthValue = document.getElementById("depthTitle")
+const depth = 0
+depthValue.textContent = "Depth: " + depth + "m"
+
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 30
+camera.position.y = 100
 
 //render method draws objects
 renderer.render( scene, camera );
@@ -62,7 +56,7 @@ function addPlankton() {
   plankton.position.set(x, y, z);
   scene.add(plankton)
 }
-Array(200).fill().forEach(addPlankton)
+Array(100).fill().forEach(addPlankton)
 
 // adding custom textures
 const oceanTexture = new THREE.TextureLoader().load("./ocean.jpg");
@@ -70,14 +64,15 @@ scene.background = oceanTexture;
 
 //map Sharks
 data?.map((shark) => {
+  const number = Math.floor(Math.random() * 2)
   const Texture = new THREE.TextureLoader().load(shark.imageURL);
   const sharkBox = new THREE.Mesh(
-    new THREE.BoxGeometry(15, 15, 15),
+    new THREE.BoxGeometry(3 * shark.length, 3 * shark.length, 3 * shark.length),
     new THREE.MeshBasicMaterial({map: Texture})
   )
-  sharkBox.position.x = Math.random() * 100
+  sharkBox.position.x = number ? Math.random() * -100 : Math.random() * 100
   sharkBox.position.y = shark.yposition
-  sharkBox.position.z = Math.random() * 100
+  sharkBox.position.z = number ? Math.random() * -100 : Math.random() * 100
   function animate() {
     sharkBox.rotation.y += 0.01
     requestAnimationFrame( animate );
@@ -87,28 +82,20 @@ data?.map((shark) => {
   scene.add(sharkBox)
 })
 
-// Shark
-// const greatSharkTexture = new THREE.TextureLoader().load("greatShark.jpg");
-// const greatShark = new THREE.Mesh(
-//   new THREE.BoxGeometry(15,15,15),
-//   new THREE.MeshBasicMaterial({map: greatSharkTexture})
-// )
-// scene.add(greatShark);
-
 const rotateButton = document.getElementById("rotateButton")
 rotateButton.addEventListener("click", () => {
   if (controls.target === 0) {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update()
   }
-    renderer.render(scene, camera);
+    // renderer.render(scene, camera);
   }
 )
 
 const navigateButton = document.getElementById("navigateButton")
 navigateButton.addEventListener("click", () => {
   controls.target = 0
-  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
   }
 )
 
@@ -116,19 +103,35 @@ document.addEventListener("keydown", (event) => {
   switch (event.key) {
   case 'ArrowUp':
     // Move camera up
+    if (camera.position.z === -100){
+    camera.position.z = -100;
+    } else {
     camera.position.z -= 5;
+    }
     break;
   case 'ArrowDown':
     // Move camera down
-    camera.position.z += 5;
+    if (camera.position.z === 100){
+      camera.position.z = 100;
+      } else {
+        camera.position.z += 5;
+        }
     break;
   case 'ArrowLeft':
     // Move camera left
-    camera.position.x -= 3;
+    if (camera.position.x === -100){
+      camera.position.x = -100;
+      } else {
+        camera.position.x -= 3;
+        }
     break;
   case 'ArrowRight':
     // Move camera right
-    camera.position.x += 3;
+    if (camera.position.x === 100){
+      camera.position.x = 100;
+      } else {
+        camera.position.x += 3;
+        }
     break;
 }
 camera.updateMatrixWorld();
@@ -140,11 +143,21 @@ document.addEventListener("keypress", (event) => {
   switch (event.key) {
   case 's':
     // Move camera up
-    camera.position.y -= 1;
+    if (camera.position.y === -100){
+      camera.position.y = -100;
+      } else {
+        camera.position.y -= 1;
+        depth += 1;
+        }
     break;
   case 'w':
     // Move camera down
-    camera.position.y += 1;
+    if (camera.position.y === 100){
+      camera.position.y = 100;
+      } else {
+        camera.position.y += 1;
+        depth -= 1;
+        }
     break;
 }
 camera.updateMatrixWorld();

@@ -8,7 +8,7 @@
          "diet": "Seals, sea lions, fish",
          "dangerToHumans": "High",
          "imageURL": "./greatShark.jpg",
-         "yposition": 15
+         "yposition": 25
         },
         {
          "commonName": "Great Hammerhead Shark",
@@ -30,7 +30,7 @@
          "diet": "Fish, seals, turtles",
          "dangerToHumans": "High",
          "imageURL": "./tigerShark.jpg",
-         "yposition": 10
+         "yposition": 15
         },
         {
          "commonName": "Whale Shark",
@@ -52,7 +52,7 @@
          "diet": "Fish, squid",
          "dangerToHumans": "Low to moderate",
          "imageURL": "./mako.jpg",
-         "yposition": 4
+         "yposition": 3
         },
         {
          "commonName": "Blue Shark",
@@ -63,7 +63,7 @@
          "diet": "Fish, squid",
          "dangerToHumans": "Low",
          "imageURL": "./blue.jpg",
-         "yposition": 4
+         "yposition": 8
         },
         {
          "commonName": "Bull Shark",
@@ -74,7 +74,7 @@
          "diet": "Fish, dolphins, turtles",
          "dangerToHumans": "High",
          "imageURL": "./bull.jpg",
-         "yposition": 15
+         "yposition": 35
         },
         {
          "commonName": "Thresher Shark",

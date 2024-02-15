@@ -33,3 +33,10 @@ main {
   /* display: grid; */
   /* grid-template-columns: repeat(12, 1fr); */
 }
+
+#depthTitle {
+  background-color: black;
+  color: white;
+  position: absolute;
+  z-index: 11;
+}
