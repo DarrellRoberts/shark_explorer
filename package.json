@@ -12,6 +12,7 @@
     "vite": "^5.1.0"
   },
   "dependencies": {
-    "three": "^0.161.0"
+    "three": "^0.161.0",
+    "three.interactive": "^1.7.0"
   }
 }

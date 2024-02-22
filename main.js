@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { InteractionManager } from 'three.interactive';
 import data from "./data.json"
 
 //Three takes in three objects: Scene, camera and renderer
@@ -15,9 +16,18 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHei
 //3. Renderer, needs to know what DOM element to use
 const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector("#bg"),})
 
+
+// Enable interaction of three elements
+const interactionManager = new InteractionManager(
+  renderer,
+  camera,
+  renderer.domElement
+)
+
 const depthValue = document.getElementById("depthTitle")
-const depth = 0
-depthValue.textContent = "Depth: " + depth + "m"
+let depth = 0
+// depthValue.textContent = "Depth: " + depth + "m"
+depthValue.textContent =  "Depth: " + depth + "m"
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -30,17 +40,17 @@ renderer.render( scene, camera );
 
 //Light object
 // "0x" in .js means you are dealing with a hexidecimal value
-const pointLight = new THREE.PointLight(0xffffff, 50);
-pointLight.position.set(5, 5, 5);
+// const pointLight = new THREE.PointLight(0xffffff, 50);
+// pointLight.position.set(5, 5, 5);
 
 //ambient light lights up whole object
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-scene.add(pointLight, ambientLight);
+scene.add(ambientLight);
 
 //helpers show where e.g. where the point light is, where object sits
 // const lightHelper = new THREE.PointLightHelper(pointLight)
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(gridHelper)
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(gridHelper)
 
 //listens for DOM events from the mouse
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -62,8 +72,10 @@ Array(100).fill().forEach(addPlankton)
 const oceanTexture = new THREE.TextureLoader().load("./ocean.jpg");
 scene.background = oceanTexture;
 
+let sharkInfo = 0;
+
 //map Sharks
-data?.map((shark) => {
+data?.map((shark, index) => {
   const number = Math.floor(Math.random() * 2)
   const Texture = new THREE.TextureLoader().load(shark.imageURL);
   const sharkBox = new THREE.Mesh(
@@ -78,6 +90,76 @@ data?.map((shark) => {
     requestAnimationFrame( animate );
     renderer.render( scene, camera)
   }
+  interactionManager.add(sharkBox)
+
+  sharkBox.addEventListener("click", () => {
+    if (!sharkInfo) {
+    sharkInfo = document.createElement("div");
+    sharkInfo.className = "sharkInfo"
+
+    const sharkInfoTitle = document.createElement("h2")
+    const sharkInfoSciTitle = document.createElement("h3");
+
+    //need to assign <li> with class in order to change later
+    const sharkInfoLength = document.createElement("li")
+    sharkInfoLength.id = "sharkLength";
+
+    const sharkInfoSpecies = document.createElement("li")
+    sharkInfoSpecies.id = "sharkSpecies";
+
+    const sharkInfoHabitat = document.createElement("li")
+    sharkInfoHabitat.id = "sharkHabitat";
+
+    const sharkInfoDiet = document.createElement("li")
+    sharkInfoDiet.id = "sharkDiet";
+
+    const sharkInfoDanger = document.createElement("li")
+    sharkInfoDanger.id = "sharkDanger";
+
+    sharkInfoTitle.textContent = `Shark: ${shark.commonName}`;
+    sharkInfoSciTitle.textContent = `Scientific Name: ${shark.scientificName}`;
+    sharkInfoLength.textContent = `Maximum length (roughly): ${shark.length} metres`;
+    sharkInfoSpecies.textContent = `Species: ${shark.species}`;
+    sharkInfoHabitat.textContent = `Habitat: ${shark.habitat}`;
+    sharkInfoDiet.textContent = `Typical diet: ${shark.diet}`;
+    sharkInfoDanger.textContent = `Danger to humans: ${shark.dangerToHumans}`;
+
+    const cross = document.createElement("button");
+    cross.textContent = "X";
+    cross.style.backgroundColor = "red"
+
+    cross.addEventListener("click", () => {
+      document.body.removeChild(sharkInfo)
+      sharkInfo = 0;
+    })
+    document.body.appendChild(sharkInfo);
+    sharkInfo.appendChild(cross);
+    sharkInfo.appendChild(sharkInfoTitle)
+    sharkInfo.appendChild(sharkInfoSciTitle)
+    sharkInfo.appendChild(sharkInfoLength)
+    sharkInfo.appendChild(sharkInfoSpecies)
+    sharkInfo.appendChild(sharkInfoHabitat)
+    sharkInfo.appendChild(sharkInfoDiet)
+    sharkInfo.appendChild(sharkInfoDanger)
+  } else {
+    const sharkInfoTitle = sharkInfo.querySelector("h2")
+    const sharkInfoSciTitle = sharkInfo.querySelector("h3")
+    const sharkInfoLength = document.getElementById("sharkLength")
+    const sharkInfoSpecies = document.getElementById("sharkSpecies")
+    const sharkInfoHabitat = document.getElementById("sharkHabitat")
+    const sharkInfoDiet = document.getElementById("sharkDiet")
+    const sharkInfoDanger = document.getElementById("sharkDanger")
+
+    sharkInfoTitle.textContent = `Shark: ${shark.commonName}`
+    sharkInfoSciTitle.textContent = `Scientific Name: ${shark.scientificName}`;
+    sharkInfoLength.textContent = `Maximum length (roughly): ${shark.length} metres`;
+    sharkInfoSpecies.textContent = `Species: ${shark.species}`;
+    sharkInfoHabitat.textContent = `Habitat: ${shark.habitat}`;
+    sharkInfoDiet.textContent = `Typical diet: ${shark.diet}`;
+    sharkInfoDanger.textContent = `Danger to humans: ${shark.dangerToHumans}`;
+  }
+  })
+  interactionManager.update();
   animate()
   scene.add(sharkBox)
 })
@@ -103,7 +185,7 @@ document.addEventListener("keydown", (event) => {
   switch (event.key) {
   case 'ArrowUp':
     // Move camera up
-    if (camera.position.z === -100){
+    if (camera.position.z < -100){
     camera.position.z = -100;
     } else {
     camera.position.z -= 5;
@@ -111,7 +193,7 @@ document.addEventListener("keydown", (event) => {
     break;
   case 'ArrowDown':
     // Move camera down
-    if (camera.position.z === 100){
+    if (camera.position.z > 100){
       camera.position.z = 100;
       } else {
         camera.position.z += 5;
@@ -119,7 +201,7 @@ document.addEventListener("keydown", (event) => {
     break;
   case 'ArrowLeft':
     // Move camera left
-    if (camera.position.x === -100){
+    if (camera.position.x < -100){
       camera.position.x = -100;
       } else {
         camera.position.x -= 3;
@@ -127,50 +209,54 @@ document.addEventListener("keydown", (event) => {
     break;
   case 'ArrowRight':
     // Move camera right
-    if (camera.position.x === 100){
+    if (camera.position.x > 100){
       camera.position.x = 100;
       } else {
         camera.position.x += 3;
         }
     break;
 }
-camera.updateMatrixWorld();
-controls.update()
-renderer.render(scene, camera);
+// camera.updateMatrixWorld();
+// controls.update()
+// renderer.render(scene, camera);
 })
 
 document.addEventListener("keypress", (event) => {
   switch (event.key) {
   case 's':
-    // Move camera up
-    if (camera.position.y === -100){
+    // Move camera down
+    if (camera.position.y < -99){
       camera.position.y = -100;
+      depth = 200;
+      depthValue.textContent = "Depth: 200m"
       } else {
-        camera.position.y -= 1;
-        depth += 1;
-        }
+      camera.position.y -= 1;
+      depth = 100 - Math.round(camera.position.y);
+      depthValue.textContent = "Depth: " + depth + "m";
+      }
     break;
   case 'w':
-    // Move camera down
-    if (camera.position.y === 100){
+    // Move camera up
+    if (camera.position.y > 99){
       camera.position.y = 100;
+      depth = 0
+      depthValue.textContent = "Depth: 0m"
       } else {
         camera.position.y += 1;
-        depth -= 1;
+        depth = 100 - Math.round(camera.position.y);
+        depthValue.textContent = "Depth: " + depth + "m";
         }
     break;
 }
-camera.updateMatrixWorld();
-controls.update()
-renderer.render(scene, camera);
+// camera.updateMatrixWorld();
+// controls.update()
+// renderer.render(scene, camera);
 })
 
 
 // recursive function that renders the app automatically
 // reduces the need to have to call the function every time
 function animate() {
-  tigerShark.rotation.y += 0.01
-  greatShark.rotation.y += 0.01
   requestAnimationFrame( animate );
   renderer.render( scene, camera)
 }
