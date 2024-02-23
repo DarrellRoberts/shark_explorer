@@ -38,11 +38,6 @@ renderer.render( scene, camera );
 
 //three.js library: https://threejs.org/docs/#api/en/geometries
 
-//Light object
-// "0x" in .js means you are dealing with a hexidecimal value
-// const pointLight = new THREE.PointLight(0xffffff, 50);
-// pointLight.position.set(5, 5, 5);
-
 //ambient light lights up whole object
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
@@ -170,55 +165,71 @@ rotateButton.addEventListener("click", () => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update()
   }
-    // renderer.render(scene, camera);
   }
 )
 
 const navigateButton = document.getElementById("navigateButton")
 navigateButton.addEventListener("click", () => {
   controls.target = 0
-  // renderer.render(scene, camera);
   }
 )
+
+//Welcome Message
+const controlCon = document.getElementById("controlsCon")
+const welcomeMessage = document.getElementById("mouseControls")
+const welcomeCross = document.createElement("button");
+    welcomeCross.textContent = "Okay";
+    welcomeCross.style.backgroundColor = "red"
+welcomeCross.addEventListener("click", () => {
+  // document.body.removeChild(welcomeMessage)
+  welcomeMessage.style.display = "none";
+})
+welcomeMessage.appendChild(welcomeCross);
 
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
   case 'ArrowUp':
     // Move camera up
+    const arrowUp = document.getElementById("arrowButtonUp")
     if (camera.position.z < -100){
     camera.position.z = -100;
     } else {
+    arrowUp.style.filter = "invert(1)"
     camera.position.z -= 5;
-    }
+    setTimeout(() => {arrowUp.style.filter = "none"}, 50)}
+    // arrowUp.style.filter = "none";
     break;
   case 'ArrowDown':
     // Move camera down
+    const arrowDown = document.getElementById("arrowButtonDown")
     if (camera.position.z > 100){
       camera.position.z = 100;
       } else {
+        arrowDown.style.filter = "invert(1)"
         camera.position.z += 5;
-        }
+        setTimeout(() => {arrowDown.style.filter = "none"}, 50)}
     break;
   case 'ArrowLeft':
     // Move camera left
+    const arrowLeft = document.getElementById("arrowButtonLeft")
     if (camera.position.x < -100){
       camera.position.x = -100;
       } else {
+        arrowLeft.style.filter = "invert(1)"
         camera.position.x -= 3;
-        }
+        setTimeout(() => {arrowLeft.style.filter = "none"}, 50)}
     break;
   case 'ArrowRight':
     // Move camera right
+    const arrowRight = document.getElementById("arrowButtonRight")
     if (camera.position.x > 100){
       camera.position.x = 100;
       } else {
+        arrowRight.style.filter = "invert(1)"
         camera.position.x += 3;
-        }
+        setTimeout(() => {arrowRight.style.filter = "none"}, 50)}
     break;
 }
-// camera.updateMatrixWorld();
-// controls.update()
-// renderer.render(scene, camera);
 })
 
 document.addEventListener("keypress", (event) => {
@@ -241,16 +252,13 @@ document.addEventListener("keypress", (event) => {
       camera.position.y = 100;
       depth = 0
       depthValue.textContent = "Depth: 0m"
-      } else {
-        camera.position.y += 1;
-        depth = 100 - Math.round(camera.position.y);
-        depthValue.textContent = "Depth: " + depth + "m";
-        }
+    } else {
+      camera.position.y += 1;
+      depth = 100 - Math.round(camera.position.y);
+      depthValue.textContent = "Depth: " + depth + "m";
+    }
     break;
 }
-// camera.updateMatrixWorld();
-// controls.update()
-// renderer.render(scene, camera);
 })
 
 

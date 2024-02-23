@@ -9,6 +9,7 @@
   <body>
     <canvas id="bg"></canvas>
     <main>
+      <div class="mainCon">
       <div>
         <button id="rotateButton">
           Enable rotate
@@ -21,6 +22,33 @@
       <div>
         <h2 id="depthTitle"></h2> 
       </div>
+    </div>
+    <div id="controlsCon">
+      <div id="mouseControls">
+        <h2>Welcome!</h2>
+        <li>Click and drag to rotate the camera</li>
+        <br/>
+        <li>Control panel is on the left to navigate the ocean.</li>
+        <br/>
+        <li>Click on each shark to find out its details</li>
+        <br/>
+      </div>
+      <div class="controls">
+        <h2>Controls</h2>
+        <img src="/arrowButtonVector.svg" alt="arrowButton" width="100px" id="arrowButtonUp"/>
+        <div class="controlsRow">
+          <img src="/arrowButtonVector.svg" alt="arrowButton" width="100px" id="arrowButtonLeft"/>
+          <img src="/arrowButtonVector.svg" alt="arrowButton" width="100px" id="arrowButtonDown"/>
+          <img src="/arrowButtonVector.svg" alt="arrowButton" width="100px" id="arrowButtonRight"/>
+        </div>
+      </div>
+      <div class="ascDescControls">
+        <h2>Ascend:</h2>
+        <img src="/wkey.svg" alt="wButton" width="100px" id="ascendKey"/>
+        <h2>Descend:</h2>
+        <img src="/skey.svg" alt="sButton" width="100px" id="descendKey"/>
+      </div>
+    </div>
     </main>
     <script type="module" src="/main.js"></script>
   </body>

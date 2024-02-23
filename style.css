@@ -11,7 +11,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-main {
+.mainCon {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -40,15 +40,73 @@ body {
   margin: 0px;
 }
 
-#rotateButton {
+#mouseControls {
+  display: flex;
   position: absolute;
-  z-index: 11;
+  flex-direction: column;
+  z-index: 15;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 3rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  font-family: var(--mainFont);
+  -webkit-box-shadow: 2px 7px 15px 5px #000000; 
+  box-shadow: 2px 7px 15px 5px #000000;
+}
+
+#mouseControls h2 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+#mouseControls li {
+  font-size: 1.25rem;
+}
+
+#controlsCon {
+  display: flex;
+  z-index: 15;
+}
+
+.controls {
+  z-index: 15;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 0px;
+}
+
+#arrowButtonLeft {
+  transform: rotate(270deg);
+}
+#arrowButtonDown {
+  transform: rotate(180deg);
+}
+#arrowButtonRight {
+  transform: rotate(90deg);
+}
+
+.ascDescControls {
+  position: absolute;
+  z-index: 15;
+}
+
+#rotateButton {
+    /*Don't need the button, however if you delete it from the DOM the controls don't work. Need to figure out why*/
+  /* position: absolute; */
+  /* z-index: 11; */
+  display: none;
 }
 
 #navigateButton {
-  position: absolute;
-  top: 20%;
-  z-index: 11;
+  /*Don't need the button, however if you delete it from the DOM the controls don't work. Need to figure out why*/
+  /* position: absolute; */
+  /* top: 20%; */
+  /* z-index: 11; */
+  display: none;
 }
 
 #depthTitle {
@@ -59,13 +117,28 @@ body {
 }
 
 .sharkInfo {
-background-color: black;
+background-color: white;
 position: absolute;
-color: white;
+color: black;
 z-index: 100;
 padding: 5rem;
 font-family: var(--mainFont);
 border-radius: 20px;
+right: 0px;
+-webkit-box-shadow: 2px 7px 15px 5px #000000; 
+box-shadow: 2px 7px 15px 5px #000000;
+}
+
+.sharkInfo h2 {
+  font-size: 4rem;
+}
+
+.sharkInfo h3 {
+  font-size: 2rem;
+}
+
+.sharkInfo li {
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 550px) {
