@@ -181,16 +181,70 @@ const welcomeCross = document.createElement("button");
     welcomeCross.textContent = "Okay";
     welcomeCross.style.backgroundColor = "red"
 welcomeCross.addEventListener("click", () => {
-  // document.body.removeChild(welcomeMessage)
   welcomeMessage.style.display = "none";
 })
 welcomeMessage.appendChild(welcomeCross);
+
+const arrowUp = document.getElementById("arrowButtonUp")
+arrowUp.addEventListener("click", () => {
+  if (camera.position.z < -100){
+    camera.position.z = -100;
+    } else {
+    camera.position.z -= 5;
+}})
+
+const arrowDown = document.getElementById("arrowButtonDown")
+arrowDown.addEventListener("click", () => {
+  if (camera.position.z > 100){
+    camera.position.z = 100;
+    } else {
+    camera.position.z += 5;
+}})
+
+const arrowLeft = document.getElementById("arrowButtonLeft")
+arrowLeft.addEventListener("click", () => {
+  if (camera.position.x < -100){
+    camera.position.x = -100;
+    } else {
+    camera.position.x -= 3;
+}})
+
+const arrowRight = document.getElementById("arrowButtonRight")
+arrowRight.addEventListener("click", () => {
+  if (camera.position.x > 100){
+    camera.position.x = 100;
+    } else {
+    camera.position.x += 3;
+}})
+
+const wKey = document.getElementById("wKey")
+wKey.addEventListener("click", () => {
+    if (camera.position.y > 99){
+      camera.position.y = 100;
+      depth = 0;
+      depthValue.textContent = "Depth: 0m"
+      } else {
+      camera.position.y += 1;
+      depth = 100 - Math.round(camera.position.y);
+      depthValue.textContent = "Depth: " + depth + "m";
+  }})
+
+const sKey = document.getElementById("sKey")
+sKey.addEventListener("click", () => {
+      if (camera.position.y < -99){
+        camera.position.y = -100;
+        depth = 200;
+        depthValue.textContent = "Depth: 200m"
+        } else {
+        camera.position.y -= 1;
+        depth = 100 - Math.round(camera.position.y);
+        depthValue.textContent = "Depth: " + depth + "m";
+  }})
 
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
   case 'ArrowUp':
     // Move camera up
-    const arrowUp = document.getElementById("arrowButtonUp")
     if (camera.position.z < -100){
     camera.position.z = -100;
     } else {
@@ -201,7 +255,6 @@ document.addEventListener("keydown", (event) => {
     break;
   case 'ArrowDown':
     // Move camera down
-    const arrowDown = document.getElementById("arrowButtonDown")
     if (camera.position.z > 100){
       camera.position.z = 100;
       } else {
@@ -211,7 +264,6 @@ document.addEventListener("keydown", (event) => {
     break;
   case 'ArrowLeft':
     // Move camera left
-    const arrowLeft = document.getElementById("arrowButtonLeft")
     if (camera.position.x < -100){
       camera.position.x = -100;
       } else {
