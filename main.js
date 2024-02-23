@@ -12,7 +12,6 @@ const scene = new THREE.Scene();
 //2. Perspective camera (mimics what we see): field of view, aspect ratio, view frustum
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
 
-
 //3. Renderer, needs to know what DOM element to use
 const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector("#bg"),})
 
@@ -185,62 +184,148 @@ welcomeCross.addEventListener("click", () => {
 })
 welcomeMessage.appendChild(welcomeCross);
 
+
+//Arrows keys on click
 const arrowUp = document.getElementById("arrowButtonUp")
-arrowUp.addEventListener("click", () => {
+let holdUpTimer;
+function handleUp() {
   if (camera.position.z < -100){
     camera.position.z = -100;
     } else {
-    camera.position.z -= 5;
-}})
+    camera.position.z -= 4;
+}}
+arrowUp.addEventListener("mousedown", () => {
+  holdUpTimer = setInterval(handleUp, 25);
+})
+arrowUp.addEventListener("mouseup", () => {
+  clearTimeout(holdUpTimer);
+})
 
 const arrowDown = document.getElementById("arrowButtonDown")
-arrowDown.addEventListener("click", () => {
+let holdDownTimer;
+function handleDown() {
   if (camera.position.z > 100){
     camera.position.z = 100;
     } else {
-    camera.position.z += 5;
-}})
+    camera.position.z += 4;
+}}
+arrowDown.addEventListener("mousedown", () => {
+  holdDownTimer = setInterval(handleDown, 25);
+})
+arrowDown.addEventListener("mouseup", () => {
+  clearTimeout(holdDownTimer);
+})
 
 const arrowLeft = document.getElementById("arrowButtonLeft")
-arrowLeft.addEventListener("click", () => {
+let holdLeftTimer;
+function handleLeft() {
   if (camera.position.x < -100){
     camera.position.x = -100;
     } else {
     camera.position.x -= 3;
-}})
+}}
+arrowLeft.addEventListener("mousedown", () => {
+  holdLeftTimer = setInterval(handleLeft, 25);
+})
+arrowLeft.addEventListener("mouseup", () => {
+  clearTimeout(holdLeftTimer);
+})
 
 const arrowRight = document.getElementById("arrowButtonRight")
-arrowRight.addEventListener("click", () => {
+let holdRightTimer;
+function handleRight() {
   if (camera.position.x > 100){
     camera.position.x = 100;
     } else {
     camera.position.x += 3;
-}})
+}}
+arrowRight.addEventListener("mousedown", () => {
+  holdRightTimer = setInterval(handleRight, 25);
+})
+arrowRight.addEventListener("mouseup", () => {
+  clearTimeout(holdRightTimer);
+})
 
+//W Key on click-----
 const wKey = document.getElementById("wKey")
-wKey.addEventListener("click", () => {
+
+let holdWTimer;
+
+function handleAscend() {
+  if (camera.position.y > 99){
+    camera.position.y = 100;
+    depth = 0;
+    depthValue.textContent = "Depth: 0m"
+    } else {
+    camera.position.y += 1;
+    depth = 100 - Math.round(camera.position.y);
+    depthValue.textContent = "Depth: " + depth + "m";
+}}
+
+wKey.addEventListener("mousedown", () => {
+  holdWTimer = setInterval(handleAscend, 25);
+})
+
+wKey.addEventListener("mouseup", () => {
+  clearTimeout(holdWTimer);
+})
+
+//S Key on click-----
+const sKey = document.getElementById("sKey")
+
+let holdSTimer;
+
+function handleDescend() {
+  if (camera.position.y < -99){
+    camera.position.y = -100;
+    depth = 200;
+    depthValue.textContent = "Depth: 200m"
+    } else {
+    camera.position.y -= 1;
+    depth = 100 - Math.round(camera.position.y);
+    depthValue.textContent = "Depth: " + depth + "m";
+}
+}
+
+sKey.addEventListener("mousedown", () => {
+  holdSTimer = setInterval(handleDescend, 25);
+})
+
+sKey.addEventListener("mouseup", () => {
+  clearTimeout(holdSTimer);
+})
+
+// W and S keys on press
+document.addEventListener("keypress", (event) => {
+  switch (event.key) {
+  case 's':
+    // Move camera down
+    if (camera.position.y < -99){
+      camera.position.y = -100;
+      depth = 200;
+      depthValue.textContent = "Depth: 200m"
+      } else {
+      camera.position.y -= 1;
+      depth = 100 - Math.round(camera.position.y);
+      depthValue.textContent = "Depth: " + depth + "m";
+      }
+    break;
+  case 'w':
+    // Move camera up
     if (camera.position.y > 99){
       camera.position.y = 100;
-      depth = 0;
+      depth = 0
       depthValue.textContent = "Depth: 0m"
-      } else {
+    } else {
       camera.position.y += 1;
       depth = 100 - Math.round(camera.position.y);
       depthValue.textContent = "Depth: " + depth + "m";
-  }})
+    }
+    break;
+}
+})
 
-const sKey = document.getElementById("sKey")
-sKey.addEventListener("click", () => {
-      if (camera.position.y < -99){
-        camera.position.y = -100;
-        depth = 200;
-        depthValue.textContent = "Depth: 200m"
-        } else {
-        camera.position.y -= 1;
-        depth = 100 - Math.round(camera.position.y);
-        depthValue.textContent = "Depth: " + depth + "m";
-  }})
-
+//Arrow keys---
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
   case 'ArrowUp':
@@ -283,36 +368,6 @@ document.addEventListener("keydown", (event) => {
     break;
 }
 })
-
-document.addEventListener("keypress", (event) => {
-  switch (event.key) {
-  case 's':
-    // Move camera down
-    if (camera.position.y < -99){
-      camera.position.y = -100;
-      depth = 200;
-      depthValue.textContent = "Depth: 200m"
-      } else {
-      camera.position.y -= 1;
-      depth = 100 - Math.round(camera.position.y);
-      depthValue.textContent = "Depth: " + depth + "m";
-      }
-    break;
-  case 'w':
-    // Move camera up
-    if (camera.position.y > 99){
-      camera.position.y = 100;
-      depth = 0
-      depthValue.textContent = "Depth: 0m"
-    } else {
-      camera.position.y += 1;
-      depth = 100 - Math.round(camera.position.y);
-      depthValue.textContent = "Depth: " + depth + "m";
-    }
-    break;
-}
-})
-
 
 // recursive function that renders the app automatically
 // reduces the need to have to call the function every time
