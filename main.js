@@ -194,10 +194,10 @@ function handleUp() {
     } else {
     camera.position.z -= 4;
 }}
-arrowUp.addEventListener("mousedown", () => {
+arrowUp.addEventListener("touchstart", () => {
   holdUpTimer = setInterval(handleUp, 25);
 })
-arrowUp.addEventListener("mouseup", () => {
+arrowUp.addEventListener("touchend", () => {
   clearTimeout(holdUpTimer);
 })
 
@@ -209,10 +209,10 @@ function handleDown() {
     } else {
     camera.position.z += 4;
 }}
-arrowDown.addEventListener("mousedown", () => {
+arrowDown.addEventListener("touchstart", () => {
   holdDownTimer = setInterval(handleDown, 25);
 })
-arrowDown.addEventListener("mouseup", () => {
+arrowDown.addEventListener("touchend", () => {
   clearTimeout(holdDownTimer);
 })
 
@@ -224,10 +224,10 @@ function handleLeft() {
     } else {
     camera.position.x -= 3;
 }}
-arrowLeft.addEventListener("mousedown", () => {
+arrowLeft.addEventListener("touchstart", () => {
   holdLeftTimer = setInterval(handleLeft, 25);
 })
-arrowLeft.addEventListener("mouseup", () => {
+arrowLeft.addEventListener("touchend", () => {
   clearTimeout(holdLeftTimer);
 })
 
@@ -239,10 +239,10 @@ function handleRight() {
     } else {
     camera.position.x += 3;
 }}
-arrowRight.addEventListener("mousedown", () => {
+arrowRight.addEventListener("touchstart", () => {
   holdRightTimer = setInterval(handleRight, 25);
 })
-arrowRight.addEventListener("mouseup", () => {
+arrowRight.addEventListener("touchend", () => {
   clearTimeout(holdRightTimer);
 })
 
@@ -262,11 +262,11 @@ function handleAscend() {
     depthValue.textContent = "Depth: " + depth + "m";
 }}
 
-wKey.addEventListener("mousedown", () => {
+wKey.addEventListener("touchstart", () => {
   holdWTimer = setInterval(handleAscend, 25);
 })
 
-wKey.addEventListener("mouseup", () => {
+wKey.addEventListener("touchend", () => {
   clearTimeout(holdWTimer);
 })
 
@@ -287,11 +287,11 @@ function handleDescend() {
 }
 }
 
-sKey.addEventListener("mousedown", () => {
+sKey.addEventListener("touchstart", () => {
   holdSTimer = setInterval(handleDescend, 25);
 })
 
-sKey.addEventListener("mouseup", () => {
+sKey.addEventListener("touchend", () => {
   clearTimeout(holdSTimer);
 })
 
