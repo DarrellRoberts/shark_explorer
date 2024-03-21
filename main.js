@@ -68,6 +68,12 @@ scene.background = oceanTexture;
 
 let sharkInfo = 0;
 
+//sharGadget
+const sharkGadget = document.getElementById("sharkGadgetCon");
+const sharkGadgetTitle = document.createElement("h2")
+sharkGadgetTitle.textContent = "Shark details here..."
+sharkGadget.appendChild(sharkGadgetTitle);
+
 //map Sharks
 data?.map((shark, index) => {
   const number = Math.floor(Math.random() * 2)
@@ -88,9 +94,8 @@ data?.map((shark, index) => {
 
   sharkBox.addEventListener("click", () => {
     if (!sharkInfo) {
-    sharkInfo = document.createElement("div");
-    sharkInfo.className = "sharkInfo"
-
+    sharkGadget.removeChild(sharkGadgetTitle);
+    sharkInfo = sharkGadget;
     const sharkInfoTitle = document.createElement("h2")
     const sharkInfoSciTitle = document.createElement("h3");
 
@@ -110,7 +115,7 @@ data?.map((shark, index) => {
     const sharkInfoDanger = document.createElement("li")
     sharkInfoDanger.id = "sharkDanger";
 
-    sharkInfoTitle.textContent = `Shark: ${shark.commonName}`;
+    sharkInfoTitle.textContent = shark.commonName
     sharkInfoSciTitle.textContent = `Scientific Name: ${shark.scientificName}`;
     sharkInfoLength.textContent = `Maximum length (roughly): ${shark.length} metres`;
     sharkInfoSpecies.textContent = `Species: ${shark.species}`;
@@ -118,16 +123,7 @@ data?.map((shark, index) => {
     sharkInfoDiet.textContent = `Typical diet: ${shark.diet}`;
     sharkInfoDanger.textContent = `Danger to humans: ${shark.dangerToHumans}`;
 
-    const cross = document.createElement("button");
-    cross.textContent = "X";
-    cross.style.backgroundColor = "red"
-
-    cross.addEventListener("click", () => {
-      document.body.removeChild(sharkInfo)
-      sharkInfo = 0;
-    })
     document.body.appendChild(sharkInfo);
-    sharkInfo.appendChild(cross);
     sharkInfo.appendChild(sharkInfoTitle)
     sharkInfo.appendChild(sharkInfoSciTitle)
     sharkInfo.appendChild(sharkInfoLength)
@@ -144,7 +140,7 @@ data?.map((shark, index) => {
     const sharkInfoDiet = document.getElementById("sharkDiet")
     const sharkInfoDanger = document.getElementById("sharkDanger")
 
-    sharkInfoTitle.textContent = `Shark: ${shark.commonName}`
+    sharkInfoTitle.textContent = shark.commonName
     sharkInfoSciTitle.textContent = `Scientific Name: ${shark.scientificName}`;
     sharkInfoLength.textContent = `Maximum length (roughly): ${shark.length} metres`;
     sharkInfoSpecies.textContent = `Species: ${shark.species}`;
@@ -183,7 +179,6 @@ welcomeCross.addEventListener("click", () => {
   welcomeMessage.style.display = "none";
 })
 welcomeMessage.appendChild(welcomeCross);
-
 
 //Arrows keys on click
 const arrowUp = document.getElementById("arrowButtonUp")
