@@ -79,7 +79,7 @@ body {
   z-index: 15;
 }
 
-.controls {
+#controls {
   z-index: 15;
   position: absolute;
   display: flex;
@@ -98,7 +98,7 @@ body {
   transform: rotate(90deg);
 }
 
-.ascDescControls {
+#ascDescControls {
   position: absolute;
   z-index: 15;
 }

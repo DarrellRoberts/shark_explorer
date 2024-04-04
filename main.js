@@ -169,6 +169,12 @@ const welcomeCross = document.createElement('button')
 welcomeCross.textContent = 'Okay'
 welcomeCross.style.backgroundColor = 'red'
 welcomeCross.addEventListener('click', () => {
+  const sharkTitle = document.getElementById('sharkTitle')
+  const controls = document.getElementById('controls')
+  const ascControls = document.getElementById('ascDescControls')
+  sharkTitle.style.display = 'none'
+  controls.style.display = 'none'
+  ascControls.style.display = 'none'
   welcomeMessage.style.display = 'none'
 })
 welcomeMessage.appendChild(welcomeCross)
