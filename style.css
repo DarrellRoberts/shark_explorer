@@ -31,7 +31,7 @@ h1 {
   z-index: 12;
   margin: 0px;
   padding: 0px;
-  font-size: 7rem;
+  font-size: clamp(3rem, 5vw, 7rem);
   color: white;
   text-shadow: -5px 15px 0px black;
 }
@@ -104,17 +104,10 @@ body {
 }
 
 #rotateButton {
-    /*Don't need the button, however if you delete it from the DOM the controls don't work. Need to figure out why*/
-  /* position: absolute; */
-  /* z-index: 11; */
   display: none;
 }
 
 #navigateButton {
-  /*Don't need the button, however if you delete it from the DOM the controls don't work. Need to figure out why*/
-  /* position: absolute; */
-  /* top: 20%; */
-  /* z-index: 11; */
   display: none;
 }
 
@@ -133,8 +126,8 @@ body {
   bottom: 5%;
   z-index: 11;
   background-color: #000000d9;
-  width: 30rem;
-  height: 30rem;
+  aspect-ratio: 1/1;
+  width: clamp(15rem, 30vw, 30rem);
   border-radius: 10px;
 }
 
@@ -144,7 +137,7 @@ body {
 }
 
 #sharkGadgetCon h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);; 
   text-align: center;
   padding: 0px;
   margin: 0px;
@@ -152,25 +145,32 @@ body {
 }
 
 #sharkGadgetCon h3 {
-  font-size: 1.75rem;
-  /* padding: 0px;
-  margin: 0px; */
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
   text-align: center;
 }
 
 #sharkGadgetCon li {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);;
   text-align: left;
   margin-left: 5%;
   margin-top: 2%;
 }
-
+@media (max-width: 800px) {
+  #controls {
+    display: none;
+  }
+  #ascDescControls {
+    display: none;
+  }
+  #sharkGadgetCon {
+    aspect-ratio: 1/1.75;
+  }
+}
 @media screen and (max-width: 550px) {
   main {
     flex-direction: column;
   }
   h1 {
-    font-size: 3rem;
     text-shadow: -1px 7px 0px black;
     margin-top: 1rem;
     text-align: center;
@@ -206,19 +206,6 @@ body {
   }
   .controls h2 {
     font-size: 1.2rem;
-  }
-  #sharkGadgetCon {
-    height: 30rem;
-    width: 15rem;
-    bottom: 0%;
-  }
-  #sharkGadgetCon h2 {
-    font-size: 1.75rem;
-  }
-  #sharkGadgetCon h3 {
-    font-size: 1.5rem;
-  }
-  #sharkGadgetCon li {
-    font-size: 1.25rem;
+    display: none;
   }
 }
