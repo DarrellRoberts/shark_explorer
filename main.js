@@ -1,4 +1,3 @@
-import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { InteractionManager } from "three.interactive";
@@ -72,10 +71,24 @@ scene.background = oceanTexture;
 let sharkInfo = 0;
 
 //  sharkGadget
-const sharkGadget = document.getElementById("sharkGadgetCon");
+const sharkGadget = document.createElement("div");
+sharkGadget.id = "sharkGadgetCon";
+document.body.appendChild(sharkGadget);
+const closeBox = document.createElement("button");
 const sharkGadgetTitle = document.createElement("h2");
-sharkGadgetTitle.textContent = "Shark details here...";
+sharkGadgetTitle.textContent = "Shark Details here...";
+closeBox.textContent = "Close";
+closeBox.id = "closeSharkGadget";
+sharkGadget.appendChild(closeBox);
 sharkGadget.appendChild(sharkGadgetTitle);
+closeBox.addEventListener("click", () => {
+  document.body.removeChild(sharkGadget);
+  if (sharkInfo.textContent) {
+    sharkInfo.textContent = null;
+    sharkGadget.textContent = null;
+    closeBox.textContent = null;
+  }
+});
 
 //  map Sharks
 // eslint-disable-next-line array-callback-return
@@ -102,9 +115,25 @@ const renderShark = () => {
     interactionManager.add(sharkBox);
 
     sharkBox.addEventListener("click", () => {
-      if (!sharkInfo) {
-        sharkGadget.removeChild(sharkGadgetTitle);
+      if (sharkInfo === 0 || sharkInfo.textContent === "") {
+        if (sharkGadgetTitle.textContent !== "") {
+          sharkGadget.removeChild(sharkGadgetTitle);
+          sharkGadgetTitle.textContent = null;
+        }
         sharkInfo = sharkGadget;
+        if (closeBox.id !== "closeSharkGadget" || closeBox.textContent === "") {
+          const closeBox = document.createElement("button");
+          closeBox.id = "closeSharkGadget";
+          closeBox.textContent = "Close";
+          sharkGadget.appendChild(closeBox);
+          closeBox.addEventListener("click", () => {
+            document.body.removeChild(sharkGadget);
+            sharkInfo.textContent = null;
+            sharkGadget.textContent = null;
+            closeBox.textContent = null;
+          });
+        }
+
         const sharkInfoTitle = document.createElement("h2");
         const sharkInfoSciTitle = document.createElement("h3");
 
@@ -140,7 +169,20 @@ const renderShark = () => {
         sharkInfo.appendChild(sharkInfoHabitat);
         sharkInfo.appendChild(sharkInfoDiet);
         sharkInfo.appendChild(sharkInfoDanger);
+        sharkGadgetTitle.textContent = null;
       } else {
+        if (closeBox.id !== "closeSharkGadget") {
+          const closeBox = document.createElement("button");
+          closeBox.id = "closeSharkGadget";
+          sharkGadget.appendChild(closeBox);
+          closeBox.addEventListener("click", () => {
+            document.body.removeChild(sharkGadget);
+            sharkInfo.textContent = null;
+            sharkGadget.textContent = null;
+            closeBox.textContent = null;
+          });
+        }
+
         const sharkInfoTitle = sharkInfo.querySelector("h2");
         const sharkInfoSciTitle = sharkInfo.querySelector("h3");
         const sharkInfoLength = document.getElementById("sharkLength");
